@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical Results Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <form action="submit_results.php" method="post">
+        <h2>Medical Record Form</h2>
+        <label for="id">Doctor ID:</label>
+        <input type="text" id="id" name="doctor_id" required><br><br>
+
+        <label for="player_id">Player ID:</label>
+        <input type="text" id="player_id" name="player_id" required><br><br>
+
+        <label for="player_name">Player Name:</label>
+        <input type="text" id="player_name" name="player_name" required><br><br>
+
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" required><br><br>
+
+        <label for="medical_history">Medical History:</label>
+        <textarea id="medical_history" name="medical_history" rows="5" cols="30"></textarea><br><br>
+
+        <label for="current_medications">Current Medications:</label>
+        <textarea id="current_medications" name="current_medications" rows="5" cols="30"></textarea><br><br>
+
+        <label for="examination_results">Examination Results:</label><br>
+        <textarea id="examination_results" name="examination_results" rows="5" cols="30"></textarea><br><br>
+
+        <label for="recommendations">Recommendations:</label><br>
+        <textarea id="recommendations" name="recommendations" rows="5" cols="30"></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <?php
+    // Establish a connection to the database
+    $conn = mysqli_connect("localhost", "username", "password", "fpms");
+
+    // Check if the connection failed
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    // Check if the form has been submitted
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Get the form data
+        $doctor_id = $_POST["doctor_id"];
+        $player_id = $_POST["player_id"];
+        $player_name = $_POST["player_name"];
+        $date_of_birth = $_POST["date_of_birth"];
+        $medical_history = $_POST["medical_history"];
+        $current_medications = $_POST["current_medications"];
+        $examination_results = $_POST["examination_results"];
+        $recommendations = $_POST["recommendations"];
+
+        // Insert the data into the database
+        $sql = "INSERT INTO player_medical_report (doctor_id, player_id, player_name, date_of_birth, medical_history, current_medications, examination_results, recommendations) VALUES ('$doctor_id', '$player_id', '$player_name', '$date_of_birth', '$medical_history', '$current_medications', '$examination_results', '$recommendations')";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "Medical report submitted successfully!";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+
+    // Close the database connection
+    mysqli_close($conn);
+    ?>
+</body>
+</html>

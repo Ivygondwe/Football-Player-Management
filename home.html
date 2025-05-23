@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FPMS</title>
+	<style>
+		.header {
+			background-color:green;
+			color: #fff;
+			padding: 1rem;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+		
+		.logo {
+			height: 60px;
+			width: 80px;
+			cursor: pointer;
+		}
+		
+		.navigation {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+		
+		.navigation a {
+			color: black;
+			margin: 0 10px;
+			text-decoration: none;
+			position: relative;
+			transition: color 0.3s ease-in-out;
+		}
+		
+		.navigation a:hover::before {
+			content: "";
+			position: absolute;
+			background-color: #fff;
+			height: 2px;
+			width: 100%;
+			left: 0;
+			bottom: -5px;
+		}
+	</style>
+</head>
+<body>
+	<header class="header">
+		<a href="#">
+			<img class="logo" src="FAM.png" alt="FPMS Logo">
+		</a>
+		<center><h1>Football Aassociation of Malawi</h1></center>
+		<nav class="navigation">
+			
+			<a href="about_us.html">About Us</a>
+			<a href="#">News and Announcements</a>
+			<a href="#">Contact Us</a>
+			<a href="loginform.php">Login</a>
+		</nav>
+		
+	</header>
+	
+</body>
+</html>

@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Player Record Form</title>
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: auto;
+			padding: 20px;
+			background-color: white;
+			box-shadow: 0px 0px 10px #888888;
+		}
+
+		.form-group {
+			margin-bottom: 20px;
+		}
+
+		.form-label {
+			display: block;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+
+		.form-control {
+			display: block;
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			width: 100%;
+			background-color: #f4f4f4;
+			font-size: 16px;
+		}
+
+		.form-select {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			width: 100%;
+			background-color: #f4f4f4;
+			font-size: 16px;
+		}
+
+		.form-select option {
+			padding: 10px;
+			font-size: 16px;
+		}
+
+		.form-btn {
+			display: block;
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			background-color: #007bff;
+			color: white;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		.form-btn:hover {
+			background-color: #0069d9;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.error {
+			color: red;
+			margin-top: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Player Record Form</h1>
+		<form id="player-record-form">
+			<div class="form-group">
+				<label class="form-label" for="player-id">Player ID</label>
+				<input class="form-control" type="text" id="player-id" name="player-id" required>
+				<span class="error hidden" id="player-id-error">Please enter a valid player ID.</span>
+			</div>
+			<div class="form-group">
+				<label class="form-label" for="player-name">Player Name</label>
+				<input class="form-control" type="text" id="player-name" name="player-name" required>
+				<span class="error hidden" id="player-name-error">Please enter a player name.</span>
+			</div>
+			<div class="form-group">
+				<label class="form-label" for="date-of-birth">Date of Birth</label>
+				<input class="form-control" type="date" id="date-of-birth" name="date-of-birth" required>
+				<span class="error hidden" id="date-of-birth-error">Please enter a valid date of birth.</span>
+			</div>
+			<div class="form-group">
+				<label class="form-label" for="location">Location</label>
+				<select class="form-select" id="location" name="location" required>
+					<option value="">-- Select Location --</option>
+					<option value="North">North</option>
+					<option value="South">South</option>
+					<option value="East">East</option>
+					<option value="West">West</option>
+				</select>
+				<span class="error hidden" id="location-error">Please select a location.</span>
+			</div>
+			<div class="form-group">
+				<label class="form-label" for="team">Team</label>
+				<select class="form-select" id="team" name="team" required>
+					<option value="">-- Select Team --</option>
+					<option value="Red">Red</option>
+					<option value="Blue">Blue</option>
+					<option value="Green">Green</option>
+					<option value="Yellow">Yellow</option>
+				</select>
+				<span class="error hidden" id="team-error">Please select a team.</span>
+			</div>
+			<div class="form-group">
+				<label class="form-label">Physical Rating</label>
+				<div>
+					<input type="checkbox" id="speed" name="physical-rating" value="Speed">
+					<label for="speed">Speed</label>
+				</div>
+				<div>
+					<input type="checkbox" id="strength" name="physical-rating" value="Strength">
+					<label for="strength">Strength</label>
+				</div>
+				<div>
+					<input type="checkbox" id="power" name="physical-rating" value="Power">
+					<label for="power">Power</label>
+				</div>
+				<div>
+					<input type="checkbox" id="agility" name="physical-rating" value="Agility">
+					<label for="agility">Agility</label>
+				</div>
+				<div>
+					<input type="checkbox" id="vertical-jump" name="physical-rating" value="Vertical Jump">
+					<label for="vertical-jump">Vertical Jump</label>
+				</div>
+				<div>
+					<input type="checkbox" id="endurance" name="physical-rating" value="Endurance">
+					<label for="endurance">Endurance</label>
+				</div>
+				<div>
+					<input type="checkbox" id="balance" name="physical-rating" value="Balance">
+					<label for="balance">Balance</label>
+				</div>
+				<span class="error hidden" id="physical-rating-error">Please select at least one physical factor.</span>
+			</div>
+			<input type="submit" class="form-btn" value="Submit">
+		</form>
+	</div>
+	<script type="text/javascript">
+		const form = document.getElementById('player-record-form');
+		const playerId = document.getElementById('player-id');
+		const playerName = document.getElementById('player-name');
+		const dateOfBirth = document.getElementById('date-of-birth');
+		const location = document.getElementById('location');
+		const team = document.getElementById('team');
+		const physicalRating = document.querySelectorAll('input[name="physical-rating"]');
+		const playerIdError = document.getElementById('player-id-error');
+		const playerNameError = document.getElementById('player-name-error');
+		const dateOfBirthError = document.getElementById('date-of-birth-error');
+		const locationError = document.getElementById('location-error');
+		const teamError = document.getElementById('team-error');
+		const physicalRatingError = document.getElementById('physical-rating-error');
+		const coachId = "your-coach-id";
+
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			if (validateForm()) {
+				// Save player record to database
+				alert('Player record has been saved.');
+				form.reset();
+			} else {
+				alert('There are errors in the form. Please correct them and try again.');
+			}
+		});
+
+		function validateForm() {
+			let isValid = true;
+			if (playerId.value.trim() === '') {
+				isValid = false;
+				playerIdError.classList.remove('hidden');
+			} else {
+				playerIdError.classList.add('hidden');
+			}
+			if (playerName.value.trim() === '') {
+				isValid = false;
+				playerNameError.classList.remove('hidden');
+			} else {
+				playerNameError.classList.add('hidden');
+			}
+			if (dateOfBirth.value === '') {
+				isValid = false;
+				dateOfBirthError.classList.remove('hidden');
+			} else {
+				dateOfBirthError.classList.add('hidden');
+			}
+			if (location.value === '') {
+				isValid = false;
+				locationError.classList.remove('hidden');
+			} else {
+				locationError.classList.add('hidden');
+			}
+			if (team.value === '') {
+				isValid = false;
+				teamError.classList.remove('hidden');
+			} else {
+				teamError.classList.add('hidden');
+			}
+			let hasPhysicalRating = false;
+			physicalRating.forEach((rating) => {
+				if (rating.checked) {
+					hasPhysicalRating = true;
+				}
+			});
+			if (!hasPhysicalRating) {
+				isValid = false;
+				physicalRatingError.classList.remove('hidden');
+			} else {
+				physicalRatingError.classList.add('hidden');
+			}
+			if (coachId !== "your-coach-id") { //Replace with your coach ID
+				isValid = false;
+				alert('You are not authorized to submit this form.');
+			}
+			return isValid;
+		}
+	</script>
+</body>
+</html>

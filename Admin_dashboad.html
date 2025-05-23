@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Football Player Monitoring System</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		/* Add styles for hero section */
+		.hero {
+			height: 500px;
+			background: url('FAM.png') no-repeat center center fixed;
+			background-size: cover;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: #ffffff;
+			font-size: 48px;
+			text-align: center;
+		}
+		.hero button {
+			background-color: #ffffff;
+			color: #333333;
+			font-size: 24px;
+			padding: 20px 40px;
+			border: none;
+			border-radius: 8px;
+			cursor: pointer;
+			transition: background-color 0.5s ease;
+		}
+		.hero button:hover {
+			background-color: #333333;
+			color: #ffffff;
+		}
+
+		/* Add styles for navigation menu */
+		.navbar-default {
+			background-color: transparent;
+			border: none;
+			border-radius: 0;
+			margin-bottom: 0;
+			z-index: 9999;
+			height: 1px;
+			transition: all 0.5s ease;
+		}
+		.navbar-default .navbar-brand {
+			color: #ffffff;
+			font-size: 36px;
+			font-weight: bold;
+		}
+		.navbar-default .navbar-brand:hover,
+		.navbar-default .navbar-brand:focus {
+			color: #ffffff;
+			background-color: transparent;
+			transition: all 0.5s ease;
+		}
+		.navbar-default .navbar-toggle {
+			border: none;
+		}
+		.navbar-default .navbar-toggle:hover,
+		.navbar-default .navbar-toggle:focus {
+			background-color: transparent;
+			color: #ffffff;
+			transition: all 0.5s ease;
+		}
+		.navbar-default .icon-bar {
+			background-color: #ffffff;
+			transition: all 0.3s ease;
+		}
+		.navbar-default .navbar-collapse {
+			text-align: center;
+		}
+		.navbar-default .navbar-nav > li > a {
+			color: black;
+			font-size: 18px;
+			margin-top: 10px;
+			margin-right: 20px;
+			transition: all 0.5s ease;
+		}
+		.navbar-default .navbar-nav > li > a:hover,
+		.navbar-default .navbar-nav > li > a:focus {
+			color: #ffffff;
+			background-color: transparent;
+			transition: all 0.5s ease;
+		}
+
+		/* Add styles for footer */
+		.footer {
+			background-color: #333333;
+			color: #ffffff;
+			font-size: 18px;
+			text-align: center;
+			padding: 20px 0;
+			margin-top: 50px;
+		}
+		.footer a {
+			color: #ffffff;
+			text-decoration: none;
+		}
+		.footer a:hover {
+			color: #ffffff;
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><b>FPMS</b></a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right ">
+					<li><a href="addplayer.php" target="iframe-a"><i class="fa fa-user"></i>Add player</a></li>
+					<li><a href="viewplayer.php" target="iframe-a"><i class="fa fa-infor"></i>View player</a></li>
+					<li><a href="modify_player.php" target="iframe-a"><i class="fa fa-infor"></i>Modify player</a></li>
+					<li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-infor"></i>View report <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="view.php" target="iframe-a">Medical Report</a></li>
+							<li><a href="view_physical.php" target="iframe-a">Physical Report</a></li>
+							<li><a href="view_status.php" target="iframe-a">Status Report</a></li>
+							<li><a href="view_rating.php" target="iframe-a">Rating Report</a></li>
+						</ul>
+					</li>
+					<li><a href="loginform.php"><i class="fa fa-infor"></i>Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<iframe src=addplayer.php name="iframe-a" height="500px" width="1350px"></iframe>
+
+	<footer class="footer">
+		<p>&copy; Football Player Monitoring System <?php echo date("Y"); ?>. All rights reserved. | Designed by <a href="#">IVY</a></p>
+		<div class="social-icons">
+			<a href="#" class="fa fa-facebook"></a>
+			<a href="#" class="fa fa-twitter"></a>
+			<a href="#" class="fa fa-instagram"></a>
+		</div>
+	</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

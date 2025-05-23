@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Medical Personnel Landing Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+
+body{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+a{
+  text-decoration: none;
+  color: #003366;
+}
+
+a:hover{
+  color: #ff6600;
+}
+
+header{
+  background-color:;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav li{
+  margin: 0 10px;
+}
+
+nav a{
+  color: black;
+}
+
+nav a:hover{
+  color: green;
+}
+
+h1{
+  margin-top: 50px;
+  font-size: 40px;
+  color: black;
+}
+
+.main{
+  padding: 20px;
+}
+
+.banner{
+  background-color: #eee;
+  text-align: center;
+  padding: 50px;
+}
+
+.btn{
+  display: inline-block;
+  background-color: #003366;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+
+.btn:hover{
+  background-color: #ff6600;
+}
+
+.services{
+  padding: 50px 0;
+  background-color: #f7f7f7;
+  text-align: center;
+}
+
+.services h3{
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.services p{
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.services ul{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.services li{
+  padding: 30px;
+  flex: 1;
+  margin: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.cta{
+  background-color: #fff;
+  margin-top: 50px;
+  padding: 50px;
+  text-align: center;
+}
+
+.cta p{
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.cta .btn{
+  margin-top: 20px;
+}
+
+.logo{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 100px;
+  height: auto;
+}
+</style>
+<body>
+
+  <header>
+    <nav>
+      <img src="FAM.png" alt="Logo" class="logo">
+      <h1>Medical Personnel Dashboard</h1>
+      <ul>
+        <li><a href="loginform.php">Logout</a></li>
+        <li><a href="player_medical_report.php" target="iframe-a">Add player medical record</a></li>
+        <li><a href="modify.php" target="iframe-a">Update player medical record</a></li>
+         <li><a href="view.php" target="iframe-a">View player medical record</a></li>
+      </ul>
+    </nav>
+    <iframe src="player_medical_report.php" name="iframe-a" width="100%" height="600px" frameborder="0px"></iframe>
+  </header>
+
+  <main>
+  </main>
+
+  <footer>
+   <center> <p>&copy; 2021 Medical Personnel Dashboard. All rights reserved.</p></center>
+  </footer>
+</body>
